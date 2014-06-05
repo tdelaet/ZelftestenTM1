@@ -1,0 +1,233 @@
+\documentclass{ximera}
+\input{preamble.tex}
+\prerequisites{Het bekijken van de webcolleges die horen bij les 2.}
+\outcome{Begrip van krachten en evenwichten van een punt en dit kunnen toepassen op een eenvoudig mechanisch systeem.}
+\title{Zelftesten les 2}
+\begin{document}
+\begin{abstract}
+Dit zijn de zelftesten die je moet maken ter voorbereiding van de tweede les van Toegepaste Mechanica, deel 1.
+\end{abstract}
+\maketitle
+
+\begin{question}
+Een blok van 10 kg hangt in het aan een (massaloze) koord aan een haak A. 
+Hoe groot is de spankracht in het touw (in N)?
+
+
+\newcommand{\length}{2cm}
+\newcommand{\angleDef}{30}
+\newcommand{\width}{\length * 0.866}
+\newcommand{\height}{\length *0.5}
+\newcommand{\lengthBelow}{1cm}
+\newcommand{\sideCube}{1cm}
+\newcommand{\radius}{\length / 3}
+
+\centering
+\begin{tikzpicture}
+  \coordinate [label={above:$A$}] (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$);
+  
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  
+  \draw [dashed] ($(A)+(-\width*0.5,0)$) -- ($(A)+(\width*0.5,0)$);
+ 
+  \draw [very thick] (A) -- (B);
+  
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+  
+\end{tikzpicture}
+\begin{solution}
+\begin{hint}
+ Maak een vrijlichaamsdiagramma
+ \begin{solution}
+ In \textbf{stap 1} stellen we een vrijlichaamsdiagram op in drie opeenvolgende stappen:
+\begin{enumerate}
+ \item \textbf{bepaling van het lichaam dat vrijgemaakt wordt:} \newline
+ We maken het blok $b$ en de kabel $k$ vrij:
+ 
+\begin{center}
+\begin{tabular}{ccc}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+
+\end{tikzpicture}
+\end{tabular}
+
+
+
+
+ \end{center}
+ \item \textbf{aanduiding van de niet-contactkrachten op het lichaam:}\newline
+ In dit geval is er enkel het gewicht van het lichaam: $\vec G_b$:
+ \begin{center}
+ \begin{tabular}{ccc}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+   \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+ 
+ \item \textbf{aanduiding van alle contactkrachten op het lichaam:} \newline
+
+ \begin{center}
+ \begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
+  In dit geval is het koord weggelaten. 
+ Het weggelaten koord oefent een opwaartse kracht $\vec S_{bk}$ uit op het vrijgemaakte blok:
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+  \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
+\end{tikzpicture}
+\end{center}
+&
+  In dit geval is het blok en de haak weggelaten. 
+ Het weggelaten blok oefent een neerwaartse kracht $\vec S_{kb}$ uit op de vrijgemaakt kabel. 
+ De weggelaten haak oefent een opwaartse kracht $\vec S_{k0}$ uit op de vrijgemaakte kabel. 
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+  \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
+  \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
+\end{tikzpicture}
+\end{center}
+\end{tabular}
+\end{center}
+ \begin{itemize}
+  \item het blok heeft een gewicht $\vec G_b = -  \left\{\begin{array}{c} 0 \\ 0 \\ -100N \end{array}\right\}$
+  \item de wet van actie en reactie zegt dat: $\vec F_{kb} = -\vec F_{kb}  $ met $\vec F_{kb} $ is onbekend.
+  \item de kracht van de haak op de kabel $\vec F_{k0}$ is nog onbekend.
+ \end{itemize}
+
+\end{enumerate}
+ \end{solution}
+\end{hint}
+
+\begin{hint}
+  Stel het krachtenevenwicht op van het blok en de kabel.
+ \begin{solution}
+ In \textbf{stap 2} stellen we het krachtenevenwicht op van het blok en de kabel:
+
+ \begin{tabular}{p{0.45\textwidth}|p{0.45\textwidth}}
+ \textbf{blok}:\newline
+ \begin{equation*}
+ \vec{F}_{\textrm{resulterend}} = \vec G_b +  \vec F _{bk} = \vec 0
+\end{equation*}
+Hieruit halen we de kabelkracht:
+\begin{equation*}
+ \vec F _{bk} =  - \vec G_b =  \left\{\begin{array}{c} 0 \\ 0 \\ 100N \end{array}\right\}
+\end{equation*}
+&
+ \textbf{kabel}:\newline
+ \begin{equation*}
+ \vec{F}_{\textrm{resulterend}} =  \vec F _{kb} + \vec F _{k0} = \vec 0
+\end{equation*}
+Hieruit halen we de kracht van de haak op de kabel:
+\begin{equation*}
+  \vec F _{k0} = -\vec F _{kb} =   \vec F _{bk} =  \left\{\begin{array}{c} 0 \\ 0 \\ 100N \end{array}\right\}
+\end{equation*}
+ \end{tabular}
+
+De kabel ondervindt dus een trekkracht van ...
+ \begin{center}
+ \begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+  \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
+\end{tikzpicture}
+\end{center}
+&
+
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+  \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
+  \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
+\end{tikzpicture}
+\end{center}
+\end{tabular}
+\end{center}
+ 
+ \end{solution}
+\end{hint}
+
+\answer{$100$}
+
+\end{solution}
+\end{question}
+
+
+\end{document}
