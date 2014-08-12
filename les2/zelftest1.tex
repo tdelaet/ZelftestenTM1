@@ -1,6 +1,8 @@
 \documentclass{ximera}
 
-% \pgfplotsset{compat=1.10}
+\usetikzlibrary{calc}
+
+% \pgfplotsset{compat=1.7}
 
 %\input{preamble.tex}
 %\prerequisites{Het bekijken van de webcolleges die horen bij les 2.}
@@ -25,23 +27,17 @@ Hoe groot is de spankracht in het touw (in N)?
 \newcommand{\sideCube}{1cm}
 \newcommand{\radius}{\length / 3}
 
-% \centering
-% \begin{tikzpicture}
-%   \coordinate [label={above:$A$}] (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$);
-%   
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   
-%   \draw [fill=gray] (rect1) rectangle  (rect2);
-%   
-%   \draw [dashed] ($(A)+(-\width*0.5,0)$) -- ($(A)+(\width*0.5,0)$);
-%  
-%   \draw [very thick] (A) -- (B);
-%   
-%   \node[draw=none,align=center,label={below:10 kg}] at (B) {};
-%   
-% \end{tikzpicture}
+\centering
+\begin{tikzpicture}
+  \coordinate [label={above:$A$}] (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$);
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \draw [dashed] ($(A)+(-\width*0.5,0)$) -- ($(A)+(\width*0.5,0)$);
+  \draw [very thick] (A) -- (B);
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+\end{tikzpicture}
 
 \begin{hint}
  Maak een vrijlichaamsdiagramma
@@ -51,61 +47,61 @@ Hoe groot is de spankracht in het touw (in N)?
  \item \textbf{bepaling van het lichaam dat vrijgemaakt wordt:} \newline
  We maken het blok $b$ en de kabel $k$ vrij:
  
-% \begin{center}
-% \begin{tabular}{ccc}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   \fill (B) circle [radius=2pt] node[above left] {B};
-%    
-%   \draw [fill=gray] (rect1) rectangle  (rect2);
-%   \node[draw=none,align=center,label={below:10 kg}] at (B) {};
-% \end{tikzpicture}
-% &
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   \draw [very thick] (A) -- (B);
-%   \fill (A) circle [radius=2pt] node[left] {A};
-%   \fill (B) circle [radius=2pt] node[left] {B};
-% 
-% \end{tikzpicture}
-% \end{tabular}
-%  \end{center}
+\begin{center}
+\begin{tabular}{ccc}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+
+\end{tikzpicture}
+\end{tabular}
+ \end{center}
  
  \item \textbf{aanduiding van de niet-contactkrachten op het lichaam:}\newline
  In dit geval is er enkel het gewicht van het lichaam: $\vec G_b$:
  \begin{center}
-%  \begin{tabular}{ccc}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
-%   \fill (B) circle [radius=2pt] node[above left] {B};
-%    
-%   \draw [fill=gray] (rect1) rectangle  (rect2);
-%    \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
-%   \node[draw=none,align=center,label={below:10 kg}] at (B) {};
-% \end{tikzpicture}
-% &
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-% 
-%   \draw [very thick] (A) -- (B);
-%   \fill (A) circle [radius=2pt] node[left] {A};
-%   \fill (B) circle [radius=2pt] node[left] {B};
-% 
-% \end{tikzpicture}
-% \end{tabular}
+ \begin{tabular}{ccc}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+   \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+
+\end{tikzpicture}
+\end{tabular}
 \end{center}
  
  \item \textbf{aanduiding van alle contactkrachten op het lichaam:} \newline
@@ -114,39 +110,39 @@ Hoe groot is de spankracht in het touw (in N)?
  \begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
   In dit geval is het koord weggelaten. 
  Het weggelaten koord oefent een opwaartse kracht $\vec S_{bk}$ uit op het vrijgemaakte blok:
-%  \begin{center}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
-%   \fill (B) circle [radius=2pt] node[above left] {B};
-%    
-%   \draw [fill=gray] (rect1) rectangle  (rect2);
-%   \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
-%   \node[draw=none,align=center,label={below:10 kg}] at (B) {};
-%   \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
-% \end{tikzpicture}
-% \end{center}
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+  \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
+\end{tikzpicture}
+\end{center}
 &
   In dit geval is het blok en de haak weggelaten. 
  Het weggelaten blok oefent een neerwaartse kracht $\vec S_{kb}$ uit op de vrijgemaakt kabel. 
  De weggelaten haak oefent een opwaartse kracht $\vec S_{k0}$ uit op de vrijgemaakte kabel. 
-%  \begin{center}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-% 
-%   \draw [very thick] (A) -- (B);
-%   \fill (A) circle [radius=2pt] node[left] {A};
-%   \fill (B) circle [radius=2pt] node[left] {B};
-%   \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
-%   \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
-% \end{tikzpicture}
-% \end{center}
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+  \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
+  \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
+\end{tikzpicture}
+\end{center}
 \end{tabular}
 \end{center}
  \begin{itemize}
@@ -185,41 +181,41 @@ Hieruit halen we de kracht van de haak op de kabel:
  \end{tabular}
 
 De kabel ondervindt dus een trekkracht van ...
-%  \begin{center}
-%  \begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
-%  \begin{center}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-%   \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
-%   \fill (B) circle [radius=2pt] node[above left] {B};
-%    
-%   \draw [fill=gray] (rect1) rectangle  (rect2);
-%   \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
-%   \node[draw=none,align=center,label={below:10 kg}] at (B) {};
-%   \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
-% \end{tikzpicture}
-% \end{center}
-% &
-% 
-%  \begin{center}
-% \begin{tikzpicture}
-%   \coordinate (A) at (0, 0);
-%   \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
-%   \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
-%   \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
-% 
-%   \draw [very thick] (A) -- (B);
-%   \fill (A) circle [radius=2pt] node[left] {A};
-%   \fill (B) circle [radius=2pt] node[left] {B};
-%   \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
-%   \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
-% \end{tikzpicture}
-% \end{center}
-% \end{tabular}
-% \end{center}
+ \begin{center}
+ \begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+  \coordinate (centerOfMass) at ($(B)+(0,-\sideCube*0.5)$);
+  \fill (B) circle [radius=2pt] node[above left] {B};
+   
+  \draw [fill=gray] (rect1) rectangle  (rect2);
+  \draw[->,very thick,blue](centerOfMass) -- ($(centerOfMass)+(-90:\length*0.7)$) node[right] {$\vec G_b$};
+  \node[draw=none,align=center,label={below:10 kg}] at (B) {};
+  \draw[->,very thick,red](B) -- ($(B)+(90:\length*0.7)$) node[right] {$\vec F_{bk}$};
+\end{tikzpicture}
+\end{center}
+&
+
+ \begin{center}
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at ($(A) + (0,-\lengthBelow)$); 
+  \coordinate (rect1) at ($(B)+(-\sideCube*0.5,0)$);
+  \coordinate (rect2) at ($(B)+(\sideCube*0.5,-\sideCube)$);
+
+  \draw [very thick] (A) -- (B);
+  \fill (A) circle [radius=2pt] node[left] {A};
+  \fill (B) circle [radius=2pt] node[left] {B};
+  \draw[->,very thick,red](B) -- ($(B)+(-90:\length*0.7)$) node[right] {$\vec F_{kb}$};
+  \draw[->,very thick,red](A) -- ($(A)+(90:\length*0.7)$) node[right] {$\vec F_{k0}$};
+\end{tikzpicture}
+\end{center}
+\end{tabular}
+\end{center}
  \end{hint}
 
  
